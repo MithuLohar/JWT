@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">EventBar</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item "><a href="">Event</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <a
+        routerLink="/login"
+        class="nav-link text-capitalize"
+        style="cursor: pointer;"
+        >login</a
+      >
+
+      <a
+        routerLink="/register"
+        class="nav-link text-capitalize"
+        style="cursor: pointer;"
+        >register</a
+      >
+
+      <a
+        href=""
+        class="nav-link text-capitalize "
+        style="cursor: pointer"
+        *ngIf="_AuthService.loggedIn()"
+        (click)="_AuthService.logoutuser()"
+        style="cursor: pointer;"
+        >logout</a
+      >
+    </ul>
+  </div>
+</nav>
+<div class="container  justify-content-center login">
+  <router-outlet></router-outlet>
+</div>
