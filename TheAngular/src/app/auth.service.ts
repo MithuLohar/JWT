@@ -6,6 +6,9 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class AuthService {
+  static loginUser(loginUserData: { email: string; password: string; }) {
+    throw new Error("Method not implemented.");
+  }
   private _registerUrl = "http://localhost:3000/routes/register";
   private _loginUrl = "http://localhost:3000/routes/login";
   constructor(private http: HttpClient, private _router: Router) {}

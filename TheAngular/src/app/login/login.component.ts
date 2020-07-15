@@ -11,13 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
+
 export class LoginComponent implements OnInit {
   loginUserData = { email: "", password: "" };
-  constructor(
-    private _auth=AuthService,
-    private _router: Router,
-    private _snakbar: MatSnackBar
-  ) {}
+  constructor(private _auth: AuthService, private _router: Router,private _snakbar: MatSnackBar) {}
 
   ngOnInit() {}
   loginUser() {
