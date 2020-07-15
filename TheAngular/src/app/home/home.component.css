@@ -1,0 +1,6 @@
+.zoom:hover {
+  transform: scale(1.04);
+}
+.newcard:hover {
+  background-color: #3b5998 !important;
+}

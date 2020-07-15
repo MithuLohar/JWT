@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ data.key }}</h2>
+<mat-dialog-content>
+  <div>
+    <img
+      src="{{ data.val.icon_url }}"
+      alt="image not available"
+      style="height: 300px;width: 300px;"
+    />
+  </div>
+  <p class="text-success">official name:{{ data.val.name_full }}</p>
+  <p class="text-primary">common name:{{ data.val.name }}</p>
+  <small>maximum supply:{{ data.val.max_supply }}</small>
+</mat-dialog-content>

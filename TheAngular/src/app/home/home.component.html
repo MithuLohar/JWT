@@ -1,10 +1,13 @@
-<div class="row mt-5">
-  <div class="col-md-4 mb-3" *ngFor="let event of events">
-    <div class="card text-center">
-      <div class="card-body bg-dark text-light">
-        <h5 class="card-title">{{ event.name }}</h5>
-        <p class="card-text">Country code:{{ event.code }}</p>
-        <a href="#" class="btn btn-outline-success">Go {{ event.name }}</a>
+<div class="row mt-5 bg-dark">
+  <div class="col-md-3 mb-4 zoom" *ngFor="let event of events; let i = index">
+    <div class="card text-center ">
+      <div class="card-body bg-dark text-light newcard" (click)="openDialog(i)">
+        <h1 class="card-title">{{ event.key }}</h1>
+        <img
+          src="{{ event.val.icon_url }}"
+          alt="Image not available"
+          style="height: 100px;width: 100px;"
+        />
       </div>
     </div>
   </div>

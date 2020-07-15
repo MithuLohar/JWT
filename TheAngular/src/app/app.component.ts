@@ -8,6 +8,5 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "TheAngular";
-  constructor(private _AuthService: AuthService) { }
-  
+  constructor(private _AuthService: AuthService) {}
 }

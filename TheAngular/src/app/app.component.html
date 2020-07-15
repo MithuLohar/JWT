@@ -17,22 +17,28 @@
     </ul>
     <ul class="navbar-nav">
       <a
+        class="m-1"
+        mat-stroked-button
+        color="accent"
         routerLink="/login"
-        class="nav-link text-capitalize"
         style="cursor: pointer;"
         >login</a
       >
 
       <a
+        class="m-1"
+        mat-stroked-button
+        color="primary"
         routerLink="/register"
-        class="nav-link text-capitalize"
         style="cursor: pointer;"
         >register</a
       >
 
       <a
+        class="m-1"
         href=""
-        class="nav-link text-capitalize "
+        mat-stroked-button
+        color="warn"
         style="cursor: pointer"
         *ngIf="_AuthService.loggedIn()"
         (click)="_AuthService.logoutuser()"
@@ -42,6 +48,6 @@
     </ul>
   </div>
 </nav>
-<div class="container  justify-content-center login">
+<div class="container  justify-content-center login center">
   <router-outlet></router-outlet>
 </div>

@@ -1,10 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 const moongoose = require("mongoose");
 const RegisterModel = require("../model/user");
 const Jwt = require("jsonwebtoken");
+const weatherapi =
+  "http://api.openweathermap.org/data/2.5/weather?q=delhi&appid=4fe6b12e8072edb85cbf93e83faa58bd";
+const coinlayerapi =
+  "http://api.coinlayer.com/live?access_key=281390a86d9c46a41859b98a868ef623";
 var url =
   "mongodb+srv://mithulohar:7070596630@cluster0-tsdwe.mongodb.net/test?retryWrites=true&w=majority";
+const coinlayerdetailapi =
+  "http://api.coinlayer.com/list?access_key=281390a86d9c46a41859b98a868ef623";
 
 moongoose.connect(
   url,
@@ -83,37 +90,55 @@ function verifyToken(req, res, next) {
 }
 
 router.get("/home", verifyToken, (req, res) => {
-  let homdata = [
-    {
-      id: "1",
-      employee_name: "Tiger Nixon",
-      employee_salary: "320800",
-      employee_age: "61",
-      profile_image: ""
-    },
-    {
-      id: "2",
-      employee_name: "Garrett Winters",
-      employee_salary: "170750",
-      employee_age: "63",
-      profile_image: ""
-    },
-    {
-      id: "3",
-      employee_name: "Ashton Cox",
-      employee_salary: "86000",
-      employee_age: "66",
-      profile_image: ""
-    },
-    {
-      id: "4",
-      employee_name: "Cedric Kelly",
-      employee_salary: "433060",
-      employee_age: "22",
-      profile_image: ""
-    }
-  ];
-  res.json(homdata);
-});
+  axios
+    .get(coinlayerdetailapi)
+    .then(data => {
+      var rates = data.data.crypto;
+      rates = rates;
 
+      convertToArray(rates, function(response) {
+        res.json(response);
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.json(err);
+    });
+});
+const convertToArray = (rates, callback) => {
+  var keys = Object.keys(rates);
+  var values = Object.values(rates);
+  var data = [{ key: "", val: {} }];
+
+  keys.forEach((element, i) => {
+    var item = { key: element, val: values[i] };
+    data.push(item);
+
+    if (i == keys.length - 1) {
+      callback(data);
+    }
+  });
+};
+router.get("/coinlayer", (req, res) => {
+  axios.get(coinlayerdetailapi).then(data => {
+    var rates = data.data.crypto;
+    convertToArray1(rates, response => {
+      res.json(response);
+    });
+    res.json(rates.crypto);
+  });
+});
+const convertToArray1 = (rates, callback) => {
+  var key = Object.keys(rates);
+  var values = Object.values(rates);
+  var data = [{ key: "", val: {} }];
+
+  key.forEach((ele, i) => {
+    var item = { key: ele, val: values[i] };
+    data.push(item);
+    if (i == key.length - 1) {
+      callback(data);
+    }
+  });
+};
 module.exports = router;

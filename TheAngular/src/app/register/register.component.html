@@ -1,69 +1,86 @@
-<div class="row justify-content-center">
-  <div class="col-md-5 mt-5">
-    <div class="card ">
-      <div class="card-header "><h3 class="text-uppercase">Register</h3></div>
-      <div class="card-body">
-        <form
-          action=""
-          class="form"
-          #form="ngForm"
-          (ngSubmit)="registeruser(form)"
-        >
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              id=""
-              name="firstname"
-              placeholder="firstname"
-              ngModel
-              required
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              id=""
-              name="lastname"
-              placeholder="lastname"
-              ngModel
-              required
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="email"
-              class="form-control"
-              id=""
-              name="email"
-              placeholder="Enter EmailId"
-              ngModel
-              required
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              id=""
-              name="password"
-              placeholder="Enter password"
-              ngModel
-              required
-            />
-            <small class="">we don't share password</small>
-          </div>
+<div class="center">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>RESISTER</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
 
-          <button
-            type="submit"
-            class="btn btn-primary float-right"
-            value="registeruser"
-          >
-            register
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
+    <mat-card-content>
+      <form action="" #f="ngForm" (ngSubmit)="registeruser(form)">
+        <mat-form-field>
+          <mat-label for="firstname">firstname</mat-label
+          ><input
+            type=" text"
+            ngModel
+            required
+            matInput
+            placeholder="firstname"
+            name="firstname"
+            id="firstname"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label for="lastname">lastname</mat-label
+          ><input
+            type=" text"
+            ngModel
+            required
+            matInput
+            placeholder="lastname"
+            name="lastname"
+            id="lastname"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="email">email</mat-label
+          ><input
+            type="email"
+            matInput
+            id="email"
+            name="email"
+            placeholder="Enter Email"
+            ngModel
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="password">password</mat-label
+          ><input
+            type="password"
+            matInput
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            ngModel
+            required
+          />
+          <mat-hint align="start" class=""
+            ><strong>We Dont Share Password</strong>
+          </mat-hint>
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="accent"
+          value="registeruser"
+        >
+          register
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <strong class="loginlink"
+        >Already have account
+        <a
+          [routerLink]="['/login']"
+          routerLinkActive="router-link-active"
+          mat-button
+          color="accent"
+          >LogIn</a
+        ></strong
+      >
+    </mat-card-actions>
+  </mat-card>
 </div>
